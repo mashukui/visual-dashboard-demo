@@ -1,150 +1,93 @@
-﻿<!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>马哥python说 - 效果演示</title>
     <style>
-		body {
-			background-color: #f2f2f2;
-			font-family: Arial, sans-serif;
-		}
-
-		h1 {
-			color: #333;
-			text-align: center;
-			margin-top: 50px;
-		}
-
-		h2 {
-			color: #333;
-			text-align: center;
-			margin-top: 50px;
-		}
-
-		ul {
-			list-style-type: none;
-			margin: 0;
-			padding: 0;
-			text-align: center;
-		}
-
-		li {
-			display: inline-block;
-			margin-right: 20px;
-		}
-
-		a {
-			display: block;
-			background-color: #333;
-			color: #fff;
-			padding: 10px;
-			border-radius: 5px;
-			text-decoration: none;
-			transition: background-color 0.3s ease;
-		}
-
-		a:hover {
-			background-color: #666;
-		}
-
-        td, th {
-            text-align: left;
+        * { box-sizing: border-box; }
+        body { margin: 0; background-color: #f2f2f2; color: #333; font-family: Arial, "Microsoft YaHei", sans-serif; }
+        .page { width: min(1100px, calc(100% - 32px)); margin: 0 auto; padding: 48px 0 32px; }
+        header { margin-bottom: 34px; text-align: center; }
+        h1 { margin: 0 0 12px; font-size: clamp(28px, 4vw, 40px); }
+        .author { margin: 0; color: #666; font-size: 18px; font-weight: normal; }
+        h2 { margin: 0 0 18px; font-size: 22px; }
+        section { margin-bottom: 28px; }
+        .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+        .dashboard-link, .friend-link { display: flex; align-items: center; justify-content: center; min-height: 46px; padding: 10px 14px; border-radius: 6px; background-color: #333; color: #fff; text-align: center; text-decoration: none; transition: background-color 0.2s ease, transform 0.2s ease; }
+        .dashboard-link:hover, .friend-link:hover { background-color: #555; transform: translateY(-1px); }
+        .dashboard-link:focus-visible, .friend-link:focus-visible { outline: 3px solid #8bb9e8; outline-offset: 2px; }
+        .info-card { padding: 24px; border: 1px solid #ddd; border-radius: 8px; background-color: #fff; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 9px 12px; border-bottom: 1px solid #eee; text-align: left; }
+        tr:last-child th, tr:last-child td { border-bottom: 0; }
+        th { width: 42%; font-weight: 600; }
+        .friend-links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+        .wechat { scroll-margin-top: 24px; text-align: center; }
+        .wechat img { display: block; width: min(350px, 100%); height: auto; margin: 0 auto; }
+        footer { color: #666; font-size: 14px; text-align: center; }
+        @media (max-width: 640px) {
+            .page { width: min(100% - 24px, 1100px); padding-top: 32px; }
+            header { margin-bottom: 26px; }
+            .dashboard-grid, .friend-links { grid-template-columns: 1fr; }
+            .info-card { padding: 18px; }
+            th, td { padding: 8px 6px; font-size: 14px; }
         }
-
-        /* 备案信息样式 */
-        .beian {
-            text-align: center;
-            margin: 20px 0;
-            /* 可以设置备案信息容器的颜色（如果需要） */
-            /* color: #999; */
-        }
-
-        .beian a {
-            display: inline;
-            background-color: transparent;
-            color: #0066cc; /* 这里修改为你需要的颜色（示例：蓝色） */
-            padding: 0;
-            text-decoration: underline;
-        }
-
-        .beian a:hover {
-            background-color: transparent;
-            color: #004080; /* 鼠标悬停时的颜色（示例：深蓝色） */
-        }
-
     </style>
 </head>
 <body>
-<!-- 页面原有内容 -->
-<h1>Python可视化大屏聚合演示系统</h1>
-<h2>原创作者: 马哥python说</h2>
-<br>
-<ul>
-      <li><a href="./demo_LOL.html">大屏1-LOL英雄联盟</a></li>
-      <li><a href="./demo_city.html">大屏2-智慧城市展示</a></li>
-      <li><a href="./demo_zta.html">大屏3-张天爱舆情分析</a></li>
-      <li><a href="./demo_dbmovie_0.html">大屏4-豆瓣电影分析A</a></li>
-      <li><a href="./demo_dbmovie.html">大屏5-豆瓣电影分析B</a></li>
-</ul>
-<br>
-<ul>
-      <li><a href="./demo_tv.html">大屏6-腾讯影视分析</a></li>
-      <li><a href="./demo_income.html">大屏7-公司收入分析</a></li>
-      <li><a href="./demo_douyin.html">大屏8-抖音数据分析</a></li>
-      <li><a href="./demo_tsdr.html">大屏9-唐山打人舆情分析</a></li>
-      <li><a href="./demo_58zufang.html">大屏10-58同城房源分析</a></li>
-      <li><a href="./demo_weibohot.html">大屏11-微博热搜分析</a></li>
-      
-</ul>
-<br>
-<ul>
-      <li><a href="./demo_zbsk.html">大屏12-淄博烧烤大屏</a></li>
+<main class="page">
+    <header>
+        <h1>Python可视化大屏聚合演示系统</h1>
+        <p class="author">原创作者：马哥python说</p>
+    </header>
 
-</ul>
-<br>
-<ul>
-</ul>
+    <section aria-labelledby="dashboard-title">
+        <h2 id="dashboard-title">大屏演示</h2>
+        <div class="dashboard-grid">
+            <a class="dashboard-link" href="{{ url_for('LOL') }}">大屏1-LOL英雄联盟</a>
+            <a class="dashboard-link" href="{{ url_for('city') }}">大屏2-智慧城市展示</a>
+            <a class="dashboard-link" href="{{ url_for('zta') }}">大屏3-张天爱舆情分析</a>
+            <a class="dashboard-link" href="{{ url_for('dbmovie0') }}">大屏4-豆瓣电影分析A</a>
+            <a class="dashboard-link" href="{{ url_for('dbmovie') }}">大屏5-豆瓣电影分析B</a>
+            <a class="dashboard-link" href="{{ url_for('tv') }}">大屏6-腾讯影视分析</a>
+            <a class="dashboard-link" href="{{ url_for('income') }}">大屏7-公司收入分析</a>
+            <a class="dashboard-link" href="{{ url_for('douyin') }}">大屏8-抖音数据分析</a>
+            <a class="dashboard-link" href="{{ url_for('tsdr') }}">大屏9-唐山打人舆情分析</a>
+            <a class="dashboard-link" href="{{ url_for('zufang58') }}">大屏10-58同城房源分析</a>
+            <a class="dashboard-link" href="{{ url_for('weibohot') }}">大屏11-微博热搜分析</a>
+            <a class="dashboard-link" href="{{ url_for('zbsk') }}">大屏12-淄博烧烤大屏</a>
+        </div>
+    </section>
 
-<ul>
-    <li><br>
-
+    <section class="info-card" aria-labelledby="process-title">
+        <h2 id="process-title">大屏开发技术流程</h2>
         <table>
-            <tr>
-                <th>大屏开发技术流程：</th>
-                <td></td>
-            </tr>
-            <tr>
-                <th>①爬虫</th>
-                <td>requests</td>
-            </tr>
-            <tr>
-                <th>②数据清洗&预处理</th>
-                <td>pandas</td>
-            </tr>
-            <tr>
-                <th>③数据库</th>
-                <td>MySQL数据库</td>
-            </tr>
-            <tr>
-            <tr>
-                <th>④可视化开发</th>
-                <td>pyecharts图表+page拖拽大屏</td>
-            </tr>
-            <tr>
-                <th>⑤网页服务</th>
-                <td>Flask框架</td>
-            </tr>
+            <tbody>
+                <tr><th>①爬虫</th><td>requests</td></tr>
+                <tr><th>②数据清洗&amp;预处理</th><td>pandas</td></tr>
+                <tr><th>③数据库</th><td>MySQL数据库</td></tr>
+                <tr><th>④可视化开发</th><td>pyecharts图表 + Page拖拽大屏</td></tr>
+                <tr><th>⑤网页服务</th><td>Flask框架</td></tr>
+            </tbody>
         </table>
+    </section>
 
-        <br>
-        以上均为马哥原创，转载需本人同意，违者必究责！<br>
-        <img src="./static/公众号二维码.png" , width="350">
-    </li>
-</ul>
+    <section aria-labelledby="friend-title">
+        <h2 id="friend-title">友情链接</h2>
+        <div class="friend-links">
+            <a class="friend-link" href="https://github.com/mashukui/visual-dashboard-demo" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a class="friend-link" href="#wechat">公众号</a>
+            <a class="friend-link" href="https://mgcoding.com" target="_blank" rel="noopener noreferrer">Python学习</a>
+        </div>
+    </section>
 
-<!-- 备案信息 -->
-<!-- <div class="beian">
-    <a href="https://beian.miit.gov.cn/" target="_blank">冀ICP备2023025215号-1</a>
-</div> -->
+    <section id="wechat" class="info-card wechat" aria-labelledby="wechat-title">
+        <h2 id="wechat-title">关注公众号</h2>
+        <img src="{{ url_for('static', filename='公众号二维码.png') }}" alt="马哥python说公众号二维码">
+    </section>
 
+    <footer>以上内容均为马哥原创，转载需征得本人同意。</footer>
+</main>
 </body>
 </html>
